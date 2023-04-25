@@ -8,6 +8,11 @@ export const CointainerCoffeeList = styled.main`
 
 export const Title = styled.div``;
 
+export const TagHeader = styled.header`
+  display: flex;
+  gap: 0.5rem;
+`;
+
 export const Tag = styled.p`
   font-size: 10px;
   color: #c47f17;
@@ -22,7 +27,7 @@ export const Tag = styled.p`
 export const ContentListCoffee = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  gap: 4rem 2rem;
   margin-top: 3.5rem;
 `;
 

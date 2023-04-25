@@ -31,4 +31,9 @@ export const IconAction = styled.button`
   background: none;
   color: #8047f8;
   cursor: pointer;
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
 `;
