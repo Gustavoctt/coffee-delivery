@@ -5,7 +5,7 @@ type LargeProps = {
 };
 
 const TitleL = styled.h2<LargeProps>`
-  font-size: 48px;
+  font-size: 32px;
   line-height: 130%;
   font-family: "Baloo 2", cursive;
   color: ${({ color }) => color};

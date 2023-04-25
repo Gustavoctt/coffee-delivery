@@ -1,8 +1,8 @@
-import { LogoCoffee } from "../Icons/LogoCoffe";
+import { LogoCoffee } from "../../Icons/LogoCoffe";
 import { MapPin, ShoppingCart } from "@phosphor-icons/react";
 
 import * as S from "./styles";
-import Small from "../atoms/Typography/Small";
+import Small from "../Typography/Small";
 
 export function Header() {
   return (
@@ -12,7 +12,7 @@ export function Header() {
       <S.HeaderButtons>
         <S.LocaleButton>
           <MapPin size={22} weight="fill" />
-          <Small color="#4B2995">Porto Alegre, RS</Small>
+          <Small color="#4B2995">Orleans, SC</Small>
         </S.LocaleButton>
         <S.ShoppingButton>
           <ShoppingCart size={22} weight="fill" />

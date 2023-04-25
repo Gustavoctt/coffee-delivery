@@ -10,7 +10,6 @@ const Medium = styled.p<LargeProps>`
   line-height: 130%;
   font-family: "Roboto", sans-serif;
   color: ${({ color }) => color};
-  font-weight: ${({ bold }) => 700}; ;
 `;
 
 export default Medium;
