@@ -31,6 +31,7 @@ export const ShoppingButton = styled.button`
   padding: 10px 8px;
   border: none;
   border-radius: 6px;
+  cursor: pointer;
 
   background: #f1e9c9;
   color: #c47f17;

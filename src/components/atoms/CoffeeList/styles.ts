@@ -58,6 +58,7 @@ export const CoffeeInfo = styled.div`
 export const CoffeeFooter = styled.footer`
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 0.75rem;
 `;
 

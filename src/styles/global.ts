@@ -11,7 +11,12 @@ export const GlobalStyle = createGlobalStyle`
 
  html{
   max-width: 1440px;
-  margin: 0 160px;
+  margin: 0 auto;
+  
+  @media(max-width: 1300px){
+   margin: 0 80px;
+   
+  }
  }
 
  body{

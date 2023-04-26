@@ -115,7 +115,7 @@ export const coffeesList = [
     price: 9.9,
   },
   {
-    id: 11,
+    id: 13,
     tag: ["Especial"],
     name: "Árabe",
     description: "Bebida preparada com grãos de café árabe e especiarias",
@@ -123,7 +123,7 @@ export const coffeesList = [
     price: 9.9,
   },
   {
-    id: 12,
+    id: 14,
     tag: ["Especial", "Alccolico"],
     name: "Irlandês",
     description: "Bebida a base de café, uísque irlandês, açúcar e chantilly",

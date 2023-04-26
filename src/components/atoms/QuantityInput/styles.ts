@@ -1,19 +1,18 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  flex: 1;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-direction: row;
   background: #e6e5e5;
   padding: 12px 8px;
   border-radius: 6px;
-  height: 2.375rem;
+  gap: 2px;
 
   input {
+    width: 40px;
+    outline: none;
+    font-size: 1rem;
     text-align: center;
-    width: 100%;
     background: none;
     border: none;
     color: #272221;
