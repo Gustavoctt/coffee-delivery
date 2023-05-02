@@ -7,6 +7,7 @@ import TitleS from "../Typography/TitleS";
 import * as S from "./styles";
 import { useContext, useState } from "react";
 import { CoffeCartContext } from "../../../context/CoffeCartContext";
+import { formatMoney } from "../../../utils/formatPrice";
 
 interface CoffeeCardProps {
   coffeeData: CoffeProps;
@@ -42,7 +43,7 @@ export function CoffeeCard({ coffeeData }: CoffeeCardProps) {
         <S.CoffeeFooter>
           <S.Price>
             <Small color="#403937">R$</Small>
-            <TitleM color="#403937">{coffeeData.price}</TitleM>
+            <TitleM color="#403937">{formatMoney(coffeeData.price)}</TitleM>
           </S.Price>
           <QuantityInput
             onIncrease={handleIncrease}

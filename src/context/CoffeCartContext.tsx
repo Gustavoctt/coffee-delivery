@@ -7,7 +7,7 @@ interface CoffeCartContextType {
   cartQuantity: number;
   addCoffeesToCart: (coffee: CoffeProps) => void;
   removeCoffeeToCart: (id: number) => void;
-  icreaseCoffeeQuantity: (id: number) => void;
+  increaseCoffeeQuantity: (id: number) => void;
   decreaseCoffeeQuantity: (id: number) => void;
 }
 
@@ -59,7 +59,7 @@ export function CoffeeCartContextProvider({
     setCoffeesCart(cartWithoutDeletedOne);
   }
 
-  function icreaseCoffeeQuantity(id: number) {
+  function increaseCoffeeQuantity(id: number) {
     setCoffeesCart((state) =>
       state.map((item) => {
         if (item.id === id) {
@@ -95,7 +95,7 @@ export function CoffeeCartContextProvider({
         coffeesCart,
         addCoffeesToCart,
         removeCoffeeToCart,
-        icreaseCoffeeQuantity,
+        increaseCoffeeQuantity,
         decreaseCoffeeQuantity,
         cartQuantity,
         orderPrice,

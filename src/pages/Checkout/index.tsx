@@ -7,11 +7,24 @@ import TitleXS from "../../components/atoms/Typography/TitleXS";
 import { AddressForm } from "./components/AddressForm";
 import { PaymentForm } from "./components/PaymentForm";
 
-import coffe from "../../assets/coffeeArabe.png";
 import { QuantityInput } from "../../components/atoms/QuantityInput";
 import TitleL from "../../components/atoms/Typography/TitleL";
+import { useContext } from "react";
+import { CoffeCartContext } from "../../context/CoffeCartContext";
+import { formatMoney } from "../../utils/formatPrice";
 
 export function Checkout() {
+  const {
+    coffeesCart,
+    removeCoffeeToCart,
+    decreaseCoffeeQuantity,
+    increaseCoffeeQuantity,
+    orderPrice,
+  } = useContext(CoffeCartContext);
+
+  const deliveryPrice = 3.5;
+  const totalPrice = orderPrice + deliveryPrice;
+
   return (
     <>
       <Header />
@@ -47,64 +60,72 @@ export function Checkout() {
         <S.ContentCheckoutOrder>
           <TitleXS color="#403937">Cafés selecionados</TitleXS>
           <S.BoxCheckoutOrder>
-            <S.ItemOrder>
-              <S.ItemData>
-                <img src={coffe} alt="" />
+            {coffeesCart.length > 0 ? (
+              <>
+                {coffeesCart.map((coffee) => (
+                  <>
+                    <S.ItemOrder>
+                      <S.ItemData>
+                        <img src={coffee.image} alt="" />
 
-                <S.ItemActions>
-                  <Medium color="#403937">Expresso</Medium>
-                  <footer>
-                    <QuantityInput />
-                    <S.ButtonOrder>
-                      <Trash size={16} color="#8047F8" />
-                      <Small color="#403937">Remover</Small>
-                    </S.ButtonOrder>
-                  </footer>
-                </S.ItemActions>
-              </S.ItemData>
-              <S.ItemPrice>
-                <Medium color="#403937"> R$ 9,90</Medium>
-              </S.ItemPrice>
-            </S.ItemOrder>
-            <S.SeparatorLine />
-            <S.ItemOrder>
-              <S.ItemData>
-                <img src={coffe} alt="" />
+                        <S.ItemActions>
+                          <Medium color="#403937">{coffee.name}</Medium>
+                          <footer>
+                            <QuantityInput
+                              quantity={coffee.quantity}
+                              onDecrease={() =>
+                                decreaseCoffeeQuantity(coffee.id)
+                              }
+                              onIncrease={() =>
+                                increaseCoffeeQuantity(coffee.id)
+                              }
+                            />
+                            <S.ButtonOrder
+                              onClick={() => removeCoffeeToCart(coffee.id)}
+                            >
+                              <Trash size={16} color="#8047F8" />
+                              <Small color="#403937">Remover</Small>
+                            </S.ButtonOrder>
+                          </footer>
+                        </S.ItemActions>
+                      </S.ItemData>
+                      <S.ItemPrice>
+                        <Medium color="#403937">{`R$ ${formatMoney(
+                          coffee.price
+                        )}`}</Medium>
+                      </S.ItemPrice>
+                    </S.ItemOrder>
+                    <S.SeparatorLine />
+                  </>
+                ))}
+                <S.CheckoutAmount>
+                  <div>
+                    <Small color="#403937">Total de itens</Small>
+                    <Medium color="#403937">{`R$ ${formatMoney(
+                      orderPrice
+                    )}`}</Medium>
+                  </div>
+                  <div>
+                    <Small color="#403937">Entrega</Small>
+                    <Medium color="#403937">{`R$ ${formatMoney(
+                      deliveryPrice
+                    )}`}</Medium>
+                  </div>
+                  <div>
+                    <TitleL color="#403937">Total</TitleL>
+                    <TitleL color="#403937">{`R$ ${formatMoney(
+                      totalPrice
+                    )}`}</TitleL>
+                  </div>
+                </S.CheckoutAmount>
 
-                <S.ItemActions>
-                  <Medium color="#403937">Expresso</Medium>
-                  <footer>
-                    <QuantityInput />
-                    <S.ButtonOrder>
-                      <Trash size={16} color="#8047F8" />
-                      <Small color="#403937">Remover</Small>
-                    </S.ButtonOrder>
-                  </footer>
-                </S.ItemActions>
-              </S.ItemData>
-              <S.ItemPrice>
-                <Medium color="#403937"> R$ 9,90</Medium>
-              </S.ItemPrice>
-            </S.ItemOrder>
-            <S.SeparatorLine />
-            <S.CheckoutAmount>
-              <div>
-                <Small color="#403937">Total de itens</Small>
-                <Medium color="#403937">R$ 29,70</Medium>
-              </div>
-              <div>
-                <Small color="#403937">Entrega</Small>
-                <Medium color="#403937">R$ 3,50</Medium>
-              </div>
-              <div>
-                <TitleL color="#403937">Total</TitleL>
-                <TitleL color="#403937">R$ 30,00</TitleL>
-              </div>
-            </S.CheckoutAmount>
-
-            <S.ButtonConfirm>
-              <Medium color="#ffffff">Confirmar pedido</Medium>
-            </S.ButtonConfirm>
+                <S.ButtonConfirm>
+                  <Medium color="#ffffff">Confirmar pedido</Medium>
+                </S.ButtonConfirm>
+              </>
+            ) : (
+              <Medium color="#403937">Nenhum item selecionado</Medium>
+            )}
           </S.BoxCheckoutOrder>
         </S.ContentCheckoutOrder>
       </S.ContainerCheckout>
