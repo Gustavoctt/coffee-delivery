@@ -8,18 +8,8 @@ export const Container = styled.div`
   border-radius: 6px;
   gap: 2px;
 
-  input {
-    width: 40px;
-    outline: none;
-    font-size: 1rem;
-    text-align: center;
-    background: none;
-    border: none;
-    color: #272221;
-
-    &:focus {
-      outline: none;
-    }
+  p {
+    padding: 0 0.5rem;
   }
 `;
 

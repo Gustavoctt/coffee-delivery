@@ -4,8 +4,12 @@ import { MapPin, ShoppingCart } from "@phosphor-icons/react";
 import * as S from "./styles";
 import Small from "../Typography/Small";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { CoffeCartContext } from "../../../context/CoffeCartContext";
 
 export function Header() {
+  const { cartQuantity } = useContext(CoffeCartContext);
+
   return (
     <S.ContainerHeader>
       <Link to={"/"}>
@@ -19,6 +23,9 @@ export function Header() {
         </S.LocaleButton>
         <Link to={"/checkout"}>
           <S.ShoppingButton>
+            {cartQuantity >= 1 && (
+              <S.CartQuantitySpan>{cartQuantity}</S.CartQuantitySpan>
+            )}
             <ShoppingCart size={22} weight="fill" />
           </S.ShoppingButton>
         </Link>

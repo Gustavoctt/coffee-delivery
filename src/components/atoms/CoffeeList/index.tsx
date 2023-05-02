@@ -1,23 +1,23 @@
-import TitleL from "../Typography/TitleL";
-
-import CoffeeExpresso from "../../../assets/coffeeExpresso.png";
-
 import * as S from "./styles";
 import TitleS from "../Typography/TitleS";
 import Small from "../Typography/Small";
 import TitleM from "../Typography/TitleM";
+import TitleL from "../Typography/TitleL";
 import { QuantityInput } from "../QuantityInput";
-import { ShoppingCart } from "@phosphor-icons/react";
-import { useEffect, useState } from "react";
+import { CoffeProps } from "../../../types/coffe";
 import { coffeesList } from "../../../mocks/coffee";
+import { ShoppingCart } from "@phosphor-icons/react";
+import { useContext, useEffect, useState } from "react";
+import { CoffeCartContext } from "../../../context/CoffeCartContext";
+import { CoffeeCard } from "../CoffeeCard";
 
 export function CoffeeList() {
-  const [coffees, setCoffees] = useState<any>([]);
+  const [coffees, setCoffees] = useState<CoffeProps[]>([]);
+
   useEffect(() => {
     setCoffees(coffeesList);
   }, []);
 
-  console.log(coffees);
   return (
     <S.CointainerCoffeeList>
       <S.Title>
@@ -25,29 +25,8 @@ export function CoffeeList() {
       </S.Title>
 
       <S.ContentListCoffee>
-        {coffees.map((coffee: any) => (
-          <S.CoffeeCard key={coffee.id}>
-            <img src={coffee.image} />
-            <S.CoffeeInfo>
-              <S.TagHeader>
-                {coffee.tag.map((tag: string) => (
-                  <S.Tag>{tag}</S.Tag>
-                ))}
-              </S.TagHeader>
-              <TitleS color="#403937">{coffee.name}</TitleS>
-              <Small color="#8D8686">{coffee.description}</Small>
-              <S.CoffeeFooter>
-                <S.Price>
-                  <Small color="#403937">R$</Small>
-                  <TitleM color="#403937">{coffee.price}</TitleM>
-                </S.Price>
-                <QuantityInput />
-                <S.ShoppingButton>
-                  <ShoppingCart size={22} weight="fill" />
-                </S.ShoppingButton>
-              </S.CoffeeFooter>
-            </S.CoffeeInfo>
-          </S.CoffeeCard>
+        {coffees.map((coffee) => (
+          <CoffeeCard coffeeData={coffee} key={coffee.id} />
         ))}
       </S.ContentListCoffee>
     </S.CointainerCoffeeList>

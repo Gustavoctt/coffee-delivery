@@ -32,7 +32,24 @@ export const ShoppingButton = styled.button`
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  position: relative;
 
   background: #f1e9c9;
   color: #c47f17;
+`;
+
+export const CartQuantitySpan = styled.span`
+  position: absolute;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  top: calc(-1.25rem / 2.25);
+  right: calc(-1.25rem / 2.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  outline: 3.5px solid #fafafa;
+  background: #f1e9c9;
 `;
