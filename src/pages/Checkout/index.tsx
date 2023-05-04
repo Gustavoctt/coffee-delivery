@@ -1,4 +1,11 @@
-import { CurrencyDollar, MapPinLine, Trash } from "@phosphor-icons/react";
+import {
+  Bank,
+  CreditCard,
+  CurrencyDollar,
+  MapPinLine,
+  Money,
+  Trash,
+} from "@phosphor-icons/react";
 import { Header } from "../../components/atoms/Header";
 import * as S from "./styles";
 import Small from "../../components/atoms/Typography/Small";
@@ -12,6 +19,21 @@ import TitleL from "../../components/atoms/Typography/TitleL";
 import { useContext } from "react";
 import { CoffeCartContext } from "../../context/CoffeCartContext";
 import { formatMoney } from "../../utils/formatPrice";
+
+export const paymentMethods = {
+  credit: {
+    label: "Cartão de crédito",
+    icon: <CreditCard size={16} color="#8047F8" />,
+  },
+  debit: {
+    label: "Cartão de debito",
+    icon: <Bank size={16} color="#8047F8" />,
+  },
+  money: {
+    label: "Cartão de debito",
+    icon: <Money size={16} color="#8047F8" />,
+  },
+};
 
 export function Checkout() {
   const {

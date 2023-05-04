@@ -20,7 +20,7 @@ export const coffeesList = [
     name: "Expresso Tradicional",
     description: "O tradicional café feito com água quente e grãos moídos",
     image: CoffeeExpresso,
-    price: 9.9,
+    price: 4.9,
     quantity: 0,
   },
   {
@@ -29,7 +29,7 @@ export const coffeesList = [
     name: "Expresso Americano",
     description: "Expresso diluído, menos intenso que o tradicional",
     image: CoffeeAmericano,
-    price: 9.9,
+    price: 6.9,
     quantity: 0,
   },
   {
@@ -38,7 +38,7 @@ export const coffeesList = [
     name: "Expresso Cremoso",
     description: "Café expresso tradicional com espuma cremosa",
     image: CoffeeExpressoCremoso,
-    price: 9.9,
+    price: 8.9,
     quantity: 0,
   },
   {
@@ -56,7 +56,7 @@ export const coffeesList = [
     name: "Café com Leite",
     description: "Meio a meio de expresso tradicional com leite vaporizado",
     image: CoffeeLeite,
-    price: 9.9,
+    price: 3.9,
     quantity: 0,
   },
   {
@@ -66,7 +66,7 @@ export const coffeesList = [
     description:
       "Uma dose de café expresso com o dobro de leite e espuma cremosa",
     image: CoffeeLatte,
-    price: 9.9,
+    price: 4.9,
     quantity: 0,
   },
   {
@@ -86,7 +86,7 @@ export const coffeesList = [
     description:
       "Café expresso misturado com um pouco de leite quente e espuma",
     image: CoffeeMacchiato,
-    price: 9.9,
+    price: 8.9,
     quantity: 0,
   },
   {
@@ -104,7 +104,7 @@ export const coffeesList = [
     name: "Chocolate Quente",
     description: "Bebida feita com chocolate dissolvido no leite quente e café",
     image: CoffeeChocholateQuente,
-    price: 9.9,
+    price: 6.9,
     quantity: 0,
   },
   {
@@ -114,7 +114,7 @@ export const coffeesList = [
     description:
       "Drink gelado de café expresso com rum, creme de leite e hortelã",
     image: CoffeeCubano,
-    price: 9.9,
+    price: 7.9,
     quantity: 0,
   },
   {
@@ -141,7 +141,7 @@ export const coffeesList = [
     name: "Irlandês",
     description: "Bebida a base de café, uísque irlandês, açúcar e chantilly",
     image: CoffeeIrlandes,
-    price: 9.9,
+    price: 10.0,
     quantity: 0,
   },
 ];
