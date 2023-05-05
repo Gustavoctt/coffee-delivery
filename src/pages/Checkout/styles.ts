@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
-export const ContainerCheckout = styled.div`
+export const ContainerCheckout = styled.form`
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 2rem;
+  padding: 0 1rem;
 
   @media (max-width: 800px) {
     grid-template-columns: 1fr;
@@ -107,7 +108,7 @@ export const CheckoutAmount = styled.div`
   }
 `;
 
-export const ButtonConfirm = styled.div`
+export const ButtonConfirm = styled.button`
   display: flex;
   flex-direction: row;
   background: #dbac2c;

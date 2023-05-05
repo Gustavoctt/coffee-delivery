@@ -4,7 +4,7 @@ export const ContainerBanner = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 5.75rem 0;
+  padding: 5.75rem 1rem;
   gap: 3.5rem;
 `;
 

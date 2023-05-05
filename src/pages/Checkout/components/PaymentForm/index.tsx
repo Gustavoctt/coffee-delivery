@@ -1,6 +1,7 @@
 import * as S from "./styles";
 import { useState } from "react";
 import { Bank, CreditCard, Money } from "@phosphor-icons/react";
+import { useFormContext } from "react-hook-form";
 
 export const paymentMethods = {
   credit: {
@@ -27,12 +28,20 @@ export function PaymentForm() {
     setPaymentMethod(paymentMethod);
   }
 
+  const { register } = useFormContext();
+
   return (
     <S.ContentPayment>
       {Object.entries(paymentMethods).map(([key, { label, icon, id }]) => (
         <div key={key}>
-          <input type="radio" name="payment" id={id} value={label} />
+          <input
+            type="radio"
+            id={id}
+            value={label}
+            {...register("paymentMethod")}
+          />
           <S.ButtonPayment
+            type="button"
             onClick={() => handleChangePaymentMethod(id)}
             selected={paymentMethod === id}
           >

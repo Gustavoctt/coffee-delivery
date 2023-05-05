@@ -4,6 +4,7 @@ export const CointainerCoffeeList = styled.main`
   display: flex;
   flex-direction: column;
   margin-bottom: 6rem;
+  padding: 0 1rem;
 `;
 
 export const Title = styled.div``;

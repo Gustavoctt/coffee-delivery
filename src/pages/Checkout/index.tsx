@@ -1,41 +1,51 @@
-import {
-  Bank,
-  CreditCard,
-  CurrencyDollar,
-  MapPinLine,
-  Money,
-  Trash,
-} from "@phosphor-icons/react";
-import { Header } from "../../components/atoms/Header";
+import * as zod from "zod";
 import * as S from "./styles";
-import Small from "../../components/atoms/Typography/Small";
-import Medium from "../../components/atoms/Typography/Medium";
-import TitleXS from "../../components/atoms/Typography/TitleXS";
+import { useContext } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { formatMoney } from "../../utils/formatPrice";
 import { AddressForm } from "./components/AddressForm";
 import { PaymentForm } from "./components/PaymentForm";
-
-import { QuantityInput } from "../../components/atoms/QuantityInput";
+import { Header } from "../../components/atoms/Header";
+import Small from "../../components/atoms/Typography/Small";
 import TitleL from "../../components/atoms/Typography/TitleL";
-import { useContext } from "react";
+import Medium from "../../components/atoms/Typography/Medium";
+import TitleXS from "../../components/atoms/Typography/TitleXS";
+import { QuantityInput } from "../../components/atoms/QuantityInput";
 import { CoffeCartContext } from "../../context/CoffeCartContext";
-import { formatMoney } from "../../utils/formatPrice";
+import { CurrencyDollar, MapPinLine, Trash } from "@phosphor-icons/react";
+import { FormProvider, useForm } from "react-hook-form";
 
-export const paymentMethods = {
-  credit: {
-    label: "Cartão de crédito",
-    icon: <CreditCard size={16} color="#8047F8" />,
-  },
-  debit: {
-    label: "Cartão de debito",
-    icon: <Bank size={16} color="#8047F8" />,
-  },
-  money: {
-    label: "Cartão de debito",
-    icon: <Money size={16} color="#8047F8" />,
-  },
-};
+const addressValidationFormSchema = zod.object({
+  cep: zod.string().min(1, "Informe seu CEP").max(9),
+  street: zod.string().min(1),
+  number: zod.string().min(1),
+  complement: zod.string().min(1),
+  district: zod.string().min(1),
+  city: zod.string().min(1),
+  uf: zod.string().min(1),
+  paymentMethod: zod.string(),
+});
+
+export type addressFormData = zod.infer<typeof addressValidationFormSchema>;
 
 export function Checkout() {
+  const addressValidationForm = useForm<addressFormData>({
+    resolver: zodResolver(addressValidationFormSchema),
+    defaultValues: {
+      paymentMethod: undefined,
+    },
+  });
+
+  const { handleSubmit } = addressValidationForm;
+
+  function handleFinishForm(data: addressFormData) {
+    console.log({
+      userData: data,
+      coffeeCart: coffeesCart,
+      totalPrice,
+    });
+  }
+
   const {
     coffeesCart,
     removeCoffeeToCart,
@@ -48,9 +58,9 @@ export function Checkout() {
   const totalPrice = orderPrice + deliveryPrice;
 
   return (
-    <>
+    <FormProvider {...addressValidationForm}>
       <Header />
-      <S.ContainerCheckout>
+      <S.ContainerCheckout onSubmit={handleSubmit(handleFinishForm)}>
         <S.ContentOrder>
           <TitleXS color="#403937">Complete seu pedido</TitleXS>
           <S.Box>
@@ -85,7 +95,7 @@ export function Checkout() {
             {coffeesCart.length > 0 ? (
               <>
                 {coffeesCart.map((coffee) => (
-                  <>
+                  <div key={coffee.id}>
                     <S.ItemOrder>
                       <S.ItemData>
                         <img src={coffee.image} alt="" />
@@ -118,7 +128,7 @@ export function Checkout() {
                       </S.ItemPrice>
                     </S.ItemOrder>
                     <S.SeparatorLine />
-                  </>
+                  </div>
                 ))}
                 <S.CheckoutAmount>
                   <div>
@@ -141,7 +151,7 @@ export function Checkout() {
                   </div>
                 </S.CheckoutAmount>
 
-                <S.ButtonConfirm>
+                <S.ButtonConfirm type="submit">
                   <Medium color="#ffffff">Confirmar pedido</Medium>
                 </S.ButtonConfirm>
               </>
@@ -151,6 +161,6 @@ export function Checkout() {
           </S.BoxCheckoutOrder>
         </S.ContentCheckoutOrder>
       </S.ContainerCheckout>
-    </>
+    </FormProvider>
   );
 }

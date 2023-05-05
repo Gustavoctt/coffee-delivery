@@ -15,11 +15,11 @@ export function QuantityInput({
 }: QuantityInputProps) {
   return (
     <S.Container>
-      <S.IconAction onClick={onDecrease} disabled={quantity <= 1}>
+      <S.IconAction onClick={onDecrease} disabled={quantity <= 1} type="button">
         <Minus size={16} weight="bold" />
       </S.IconAction>
       <Medium color="#272221">{quantity}</Medium>
-      <S.IconAction onClick={onIncrease}>
+      <S.IconAction onClick={onIncrease} type="button">
         <Plus size={16} weight="bold" />
       </S.IconAction>
     </S.Container>

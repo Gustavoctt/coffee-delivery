@@ -6,7 +6,7 @@ export const ContainerHeader = styled.header`
   justify-content: space-between;
   align-items: center;
 
-  padding: 2rem 0;
+  padding: 2rem 1rem;
 `;
 
 export const HeaderButtons = styled.div`
