@@ -14,9 +14,10 @@ import { QuantityInput } from "../../components/atoms/QuantityInput";
 import { CoffeCartContext } from "../../context/CoffeCartContext";
 import { CurrencyDollar, MapPinLine, Trash } from "@phosphor-icons/react";
 import { FormProvider, useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const addressValidationFormSchema = zod.object({
-  cep: zod.string().min(1, "Informe seu CEP").max(9),
+  cep: zod.string().min(1),
   street: zod.string().min(1),
   number: zod.string().min(1),
   complement: zod.string().min(1),
@@ -38,7 +39,13 @@ export function Checkout() {
 
   const { handleSubmit } = addressValidationForm;
 
+  const navigate = useNavigate();
+
   function handleFinishForm(data: addressFormData) {
+    navigate("/success", {
+      state: data,
+    });
+
     console.log({
       userData: data,
       coffeeCart: coffeesCart,
